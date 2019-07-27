@@ -24,7 +24,9 @@ class Game{
     if(/*ゲーム画面に移行する条件を入力*/) return true;
     return false;
   }
-//////////////////////////////////////////////////////////////
+
+///////
+
   void showGame(){
     if(!touched) touched = isTouched();
     if(!touched) titleScreen.show();
