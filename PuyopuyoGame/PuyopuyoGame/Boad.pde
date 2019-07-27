@@ -14,4 +14,5 @@ class Boad{
     //新たにクラスやメソッド作ったりしていいので探索でis4ElementsConnectedを探してね
   }
   //testtesttedfajjidjapsfsjafoj
+  //testtetetetetetetetetetetetete!!!!!!
 }
