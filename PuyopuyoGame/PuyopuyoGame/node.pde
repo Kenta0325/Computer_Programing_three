@@ -5,7 +5,7 @@ class Node{
     index = i;
   }
   void setOutgoing(Node u){
-    
+    outgoing = u;
   }
 }
 
