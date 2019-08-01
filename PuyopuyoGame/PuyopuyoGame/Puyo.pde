@@ -9,6 +9,7 @@ class Puyo{
       case 0://ぷよの色を入れていく
     }
     loc = new PVector(/*落ちてくるときの初めの座標をいれてね*/);
+    chained = false;
   }
 
   void drawPuyo(){
