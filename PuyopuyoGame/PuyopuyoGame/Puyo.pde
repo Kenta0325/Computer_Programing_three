@@ -3,8 +3,11 @@ class Puyo{
   PVector loc; //ぷよのいる座標
   boolean chained; //ぷよが連鎖したかどうかのstatusを入れる変数
 
-  Puyo(color c){
-    this.c = c;
+  Puyo(){
+    int colorNum = random(0,4)/4;
+    switch(color){
+      case 0:\\ぷよの色を入れていく
+    }
     loc = new PVector(/*落ちてくるときの初めの座標をいれてね*/);
   }
 
