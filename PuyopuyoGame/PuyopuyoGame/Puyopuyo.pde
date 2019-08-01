@@ -14,6 +14,7 @@ class Puyopuyo extends ArrayList<Puyo>{
   //1つ前のぷよが最下点に達したら
   //ぷよ型のオブジェクトを生成
   //2個同時生成
+  //これはNextじゃなくて？
     if(/*最下点に達したら*/){
         for(int i = 0 ;  i < 2 ; i ++){
           Puyo p = new Puyo();
