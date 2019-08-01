@@ -6,7 +6,7 @@ class Puyo{
   Puyo(){
     int colorNum = random(0,4)/4;
     switch(color){
-      case 0:\\ぷよの色を入れていく
+      case 0://ぷよの色を入れていく
     }
     loc = new PVector(/*落ちてくるときの初めの座標をいれてね*/);
   }
