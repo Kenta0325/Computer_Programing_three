@@ -2,6 +2,7 @@ class Puyo{
   color c;
   PVector loc; //ぷよのいる座標
   boolean chained; //ぷよが連鎖したかどうかのstatusを入れる変数
+  boolean falled; //ぷよが落下したかどうかのstatusを入れる変数
 
   Puyo(){
     int colorNum = random(0,4)/4;
