@@ -33,6 +33,12 @@ class Puyopuyo extends ArrayList<Puyo>{
 
 }
 
-//ぷよが最下点に達したかどうかの判定？
+//ぷよが最下点に達したかどうかの判定
+boolean isFall(Puyo p){
+  for(Puyo pu : this){
+    if(pu.loc.y+/*ボードの一マス*/ == p.loc.y) return true;
+  }
+  return false;
+}
 
-//このクラスは落ちてくるぷよのクラス？
+//落ちてくるぷよも、NextのぷよもArrayListに入れた方が扱いに都合がいい
