@@ -1,4 +1,5 @@
 class Next extends Puyopuyo{
+//落ちてくるPuyo*2のクラス
 //setupで呼び出す 一回だけ　中身のみ出し入れ
 //落ちるたびに消して
 //要素ないなら　２回new Pyuo()
@@ -7,7 +8,9 @@ class Next extends Puyopuyo{
 
   void showNext(){
     //次に落ちてくるぷよを表示してね
-
+    for(Puyo p : this){
+      p.drawPuyo();
+    }
   }
   void deleteElements(){
     for(Puyo p : this){//判定用for文
@@ -21,7 +24,7 @@ class Next extends Puyopuyo{
     }
   }
 
-  void makeNewNext(){ //次に落ちてくるぷよを乱数で作成し、自身に加える
+  void addNext(){ //次に落ちてくるぷよを乱数で作成し、自身に加える
     if(this == null /*&& puyopuyo が安定したら*/){
       for(int i = 0;i < 2;i ++){
           this.add(new Puyo());
