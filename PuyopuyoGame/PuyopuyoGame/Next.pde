@@ -1,17 +1,20 @@
-class Next extends ArrayList<Puyo>{
+class Next extends Puyopuyo{
 //setupで呼び出す 一回だけ　中身のみ出し入れ
 //落ちるたびに消して
 //要素ないなら　２回new Pyuo()
+  Puyopuyo puyopuyos;
+
   Next(){}
 
   void showNext(){
     //次に落ちてくるぷよを表示してね
 
   }
-  void deleteNext(){
+  void deleteElements(){
     for(Puyo p : this){//判定用for文
       if(p.chained || p.falled){
-        for(Puyo p : this){
+        for(Puyo p : this){//Puyopuyoに渡す&消す
+          producePuyo(p);
           this.remove(p);
         }
         break;
