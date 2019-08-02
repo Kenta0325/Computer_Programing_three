@@ -31,14 +31,18 @@ class Puyopuyo extends ArrayList<Puyo>{
     }
   }
 
-}
-
-//ぷよが最下点に達したかどうかの判定
-boolean isFall(Puyo p){
-  for(Puyo pu : this){
-    if(pu.loc.y+/*ボードの一マス*/ == p.loc.y) return true;
+  //連鎖した後にぷよが最下点に達したかどうかの判定
+  boolean isFall(){
+    for(Puyo p : this){
+      for(Puyo pu : this){
+        if(pu == p) continue;
+        else if(p.loc.y + 30 == pu.loc.y || p.loc.y - 30 == pu.loc.y) continue;
+        }
+        return false;
+      }
+    return true;
   }
-  return false;
+
 }
 
 //落ちてくるぷよも、NextのぷよもArrayListに入れた方が扱いに都合がいい
