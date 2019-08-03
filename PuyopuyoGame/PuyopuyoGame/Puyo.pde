@@ -1,20 +1,28 @@
-class Puyo{
+class Puyo {
   color c;
   PVector loc; //ぷよのいる座標
   boolean chained; //ぷよが連鎖したかどうかのstatusを入れる変数
-  boolean falled; //ぷよが落下したかどうかのstatusを入れる変数 byKito
-  int locNum;  //for Next class 位置関係の把握用byKito
 
-  Puyo(){
-    int colorNum = random(0,4)/4;
-    switch(color){
-      case 0://ぷよの色を入れていく
+  Puyo() {
+    int colorNum = (int)(10*random(0, 4)/4);
+    switch(colorNum) {
+    case 0:
+      c = #F71616;
+      break;
+    case 1:
+      c = #FAFF08;
+      break;
+    case 2:
+      c = #08FF53;
+      break;
+    default:
+      c = #08FFFD;
     }
-    loc = new PVector(/*落ちてくるときの初めの座標をいれてね*/);
+    loc = new PVector(width/2.0-23, 235);
     chained = false;
   }
 
-  void drawPuyo(){
+  void drawPuyo() {
     //色分け
     //形分け↓
     //くっついていないパターン
@@ -23,10 +31,7 @@ class Puyo{
     //右とくっついているパターン
     //左とくっついているパターン
     //くっついているパターンは、くっついていないパターンを上書きする形だとやりやすい？？？
+    fill(c);
+    ellipse(loc.x, loc.y, 50, 50);
   }
-//1234567890
-//12234567890
-//12344
-
-
 }
