@@ -21,10 +21,13 @@ class Score{
 
   void showScore(){
     //スコアを表示する
+    pushMatrix();
     calculateScore();
     fill(0);
-    textSize(20);
-    text(totalScore,500,500);
+    textSize(30);
+    translate(width/2, height/2);
+    text(totalScore,50*4, -50*6);
+    popMatrix();
   }
   /*
   得点計算は1連鎖ごとに行われ、
