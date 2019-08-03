@@ -3,7 +3,7 @@ class Graph{
   EdgeSet edges;
   Graph(int[][] adjMatrix){
     nodes = new NodeSet(adjMatrix.length);
-    edges = new
+    edges = new EdgeSet(adjMatrix, nodes);
   }
   ArrayList<NodeSet> findConnectedComponents(){
 
