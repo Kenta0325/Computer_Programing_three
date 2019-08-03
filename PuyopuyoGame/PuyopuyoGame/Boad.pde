@@ -6,8 +6,16 @@ class Boad{
   }
 
   void showBoad(){
-    //ぷよぷよが落ちてくる部分の画面を描いてね
+  int w = 30;
+  pushMatrix();
+  translate(width/2,height/2);
+  for(int i = 0 ; i < 12 ; i++){
+    for(int j = 0 ; j < 6 ; j++){
+      rect(-w*3+w*j , -w*6+w*i , w , w );
+    }
   }
+  popMatrix();
+}
 
   void makeNetwork(){
     //きぬたにおまかせ♡
