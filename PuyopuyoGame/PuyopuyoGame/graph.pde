@@ -11,16 +11,27 @@ class Graph{
     for(Edge e : edges){
       Node u = e.minus;
       Node v = e.plus;
-      u.
+      u.setOutgoing(v);
+      v.setOutgoing(u);
     }
   }
 
   ArrayList<NodeSet> findConnectedComponents(){
-
+    ArrayList<NodeSet> chains = new ArrayList<NodeSet>();
+    for(Node node : nodes){
+      if(!node.mark) chains.add(BFS(node));
+    }
   }
 
-  NodeSet BFS(){
-
+  NodeSet BFS(Node node){
+    NodeSet connectedComponent = new NodeSet();
+    for(Edge edge : node.outgoing){
+      Node v = edge.minus == node ? edge.plus : edge.minus;
+      if(v.mark) continue;
+      connectedComponent.add(v);
+      v.mark = true;
+    }
+    return connectedComponent;
   }
 
 }

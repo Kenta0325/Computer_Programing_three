@@ -1,8 +1,10 @@
 class Node{
   int index;
   NodeSet outgoing;
+  boolean mark;
   Node(int i){
     index = i;
+    mark = false;
     outgoing = new NodeSet();
   }
   void setOutgoing(Node u){
