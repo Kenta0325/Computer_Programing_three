@@ -19,20 +19,23 @@ class Graph{
   ArrayList<NodeSet> findConnectedComponents(){
     ArrayList<NodeSet> chains = new ArrayList<NodeSet>();
     for(Node node : nodes){
-      if(!node.mark) chains.add(BFS(node));
+      if(!node.mark) chains.add(DFS(node));
     }
     return chains;
   }
 
-  NodeSet BFS(Node node){
+  NodeSet DFS(Node node){
     Node u = node;
     NodeSet connectedComponent = new NodeSet();
-    for(Edge edge : node.outgoing){
-      Node v = (edge.minus == node) ? edge.plus : edge.minus;
+    int index = 0;
+    while(true){
+      if(index == u.outgoing.size()) break;
+      Node v = u.outgoing.get(index++);
       if(v.mark) continue;
       connectedComponent.add(v);
       v.mark = true;
-      node = v;
+      index = 0;
+      u = v;
     }
     if(connectedComponent.size() < 4)
       return null;
