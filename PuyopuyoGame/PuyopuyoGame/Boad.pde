@@ -14,37 +14,42 @@ class Boad{
       int posX = (p.loc.x - upperLeft.x) / cellLength;
       stock[posY][posX] = p;
     }
+    stork = new Puyo[12][7];
   }
 
   void showBoad(){
     pushMatrix();
     translate(width/2,height/2);
-    int a = 50;
     fill(200);
     noStroke();
-    rect(-a*3,-a*6,300,600);
+    rect(-cellLength * 3,-cellLength * 6,300,600);
     noFill();
     stroke(255);
     strokeWeight(5);
     for(int i = 0 ; i < 6; i++){
       for(int j = 0 ; j < 12 ; j++){
         pushMatrix();
-        translate(-a*3,-a*6);
-        rect(i+a*i,j+a*j,a,a);
+        translate(-cellLength * 3,-cellLength * 6);
+        rect(i + cellLength * i, j + cellLength * j, cellLength, cellLength);
         popMatrix();
       }
     }
     stroke(0);
     pushMatrix();
     scale(1.1);
-    rect(-a*3,-a*6,300,600);
+    rect(-cellLength * 3,-cellLength * 6, 300, 600);
     popMatrix();
     popMatrix();
     }
 
-  void makeNetwork(){
+  void makeGraph(){
     //きぬたにおまかせ♡
     //新たにクラスやメソッド作ったりしていいので探索でis4ElementsConnectedを探してね
-  }
 
+    for(Puyo p : puyos){
+      //ぷよの座標（連続値）から、どのマスにいるか（離散値）を求め
+      //stock配列に加える
+    }
+    
+  }
 }
