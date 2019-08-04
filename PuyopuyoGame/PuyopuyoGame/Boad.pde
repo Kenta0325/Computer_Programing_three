@@ -1,21 +1,9 @@
 class Boad{
   Puyo[][] stock; //現在のぷよを二次元配列として保存
   int cellLength;
-  PVector upperLeft;
-  Puyopuyo puyos;
-  Boad(){
+  Boad(Puyopuyo puyos){
     cellLength = 50;
-    upperLeft = new PVector(0,0);
     stock = new Puyo[12][6];
-  }
-
-  void updataStock(Puyopuyo puyos){
-    this.puyos = puyos;
-    stock = new Puyo[12][6];
-    for(int i = 0; i < stock.lenght; i++){
-      for(int j = 0; j < stock[i].length; j++)
-        stock[i][j] = null;
-    }
   }
 
   void showBoad(){
@@ -43,7 +31,7 @@ class Boad{
     popMatrix();
     }
 
-    Graph makeGraph(){
+    Graph makeGraph(Puyopuyo puyos){
       for(Puyo p : puyos){
         //ぷよの座標（連続値）から、どのマスにいるか（離散値）を求め
         //stock配列を作成する
@@ -69,13 +57,13 @@ class Boad{
       return new Graph(adjMatrix);
     }
 
-    ArrayList<Puyopuyo> findChains(){
+    ArrayList<Puyopuyo> findChains(Puyopuyo puyos){
       ArrayList<Puyopuyo> chains = new ArrayList<Puyopuyo>();
-      Graph graph = makeGraph();
-      ArrayList<NodeSet> chaninsNode = graph.findConnectedComponents();
-      for(NodeSet nodes : chiansNode){
+      Graph graph = makeGraph(puyos);
+      ArrayList<NodeSet> chainsNode = graph.findConnectedComponents();
+      for(NodeSet nodes : chainsNode){
         if(nodes == null) continue;
-        Puyopuyo chaninBlock = new Puyopuyo();
+        Puyopuyo chainBlock = new Puyopuyo();
         for(Node node : nodes){
           chaninBlock.add(stock[node.index / 6][node.index % 6]);
         }
