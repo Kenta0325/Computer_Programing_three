@@ -2,6 +2,7 @@ class Boad{
   Puyo[][] stock; //現在のぷよを二次元配列として保存
   int cellLength;
   PVector upperLeft;
+  Puyopuyo puyos;
   Boad(){
     cellLength = 50;
     upperLeft = new PVector(0,0);
@@ -9,12 +10,8 @@ class Boad{
   }
 
   void updataStock(Puyopuyo puyos){
-    for(Puyo p : puyos){
-      int posY = (p.loc.y - upperLeft.y) / cellLength;
-      int posX = (p.loc.x - upperLeft.x) / cellLength;
-      stock[posY][posX] = p;
-    }
-    stock = new Puyo[12][7];
+    this.puyos = puyos;
+    stock = new Puyo[12][6];
     for(int i = 0; i < stock.lenght; i++){
       for(int j = 0; j < stock[i].length; j++)
         stock[i][j] = null;
@@ -69,7 +66,6 @@ class Boad{
             adjMatrix[index][index - 6] = 1;
         }
       }
-
       return new Graph(adjMatrix);
     }
 
@@ -79,11 +75,11 @@ class Boad{
       ArrayList<NodeSet> chaninsNode = graph.findConnectedComponents();
       for(NodeSet nodes : chiansNode){
         if(nodes == null) continue;
-        Puyopuyo chaninBrock = new Puyopuyo();
+        Puyopuyo chaninBlock = new Puyopuyo();
         for(Node node : nodes){
-          chaninBrock.add(stock[node.index / 6][node.index % 6]);
+          chaninBlock.add(stock[node.index / 6][node.index % 6]);
         }
-        chains.add(chainBrock);
+        chains.add(chainBlock);
       }
       return chains;
     }
