@@ -35,9 +35,9 @@ class Puyopuyo extends ArrayList<Puyo>{
       for(Puyo pu : this){
         if(pu == p) continue;
         else if(p.loc.y + 30 == pu.loc.y || p.loc.y - 30 == pu.loc.y) continue;
-        }
-        return false;
-      }
+    　}
+      return false;
+    }
     return true;
   }
 
