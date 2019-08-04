@@ -29,7 +29,7 @@ class Boad{
     for(int i = 0 ; i < 6; i++){
       for(int j = 0 ; j < 12 ; j++){
         pushMatrix();
-        translate(-cellLength * 3,-cellLength * 6);
+        translate(-cellLength * 3, -cellLength * 6);
         rect(i + cellLength * i, j + cellLength * j, cellLength, cellLength);
         popMatrix();
       }
@@ -37,7 +37,7 @@ class Boad{
     stroke(0);
     pushMatrix();
     scale(1.1);
-    rect(-cellLength * 3,-cellLength * 6, 300, 600);
+    rect(-cellLength * 3, -cellLength * 6, 300, 600);
     popMatrix();
     popMatrix();
     }
@@ -49,8 +49,7 @@ class Boad{
     for(Puyo p : puyos){
       //ぷよの座標（連続値）から、どのマスにいるか（離散値）を求め
       //stock配列を作成する
+
     }
-
-
   }
 }
