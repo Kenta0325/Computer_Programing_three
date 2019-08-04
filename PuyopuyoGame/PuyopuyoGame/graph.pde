@@ -24,14 +24,19 @@ class Graph{
   }
 
   NodeSet BFS(Node node){
+    Node u = node;
     NodeSet connectedComponent = new NodeSet();
     for(Edge edge : node.outgoing){
       Node v = edge.minus == node ? edge.plus : edge.minus;
       if(v.mark) continue;
       connectedComponent.add(v);
       v.mark = true;
+      node = v;
     }
-    return connectedComponent;
+    if(connectedComponent.size() < 4)
+      return null;
+    else
+      return connectedComponent;
   }
 
 }
