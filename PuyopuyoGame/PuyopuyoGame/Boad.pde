@@ -14,7 +14,11 @@ class Boad{
       int posX = (p.loc.x - upperLeft.x) / cellLength;
       stock[posY][posX] = p;
     }
-    stork = new Puyo[12][7];
+    stock = new Puyo[12][7];
+    for(int i = 0; i < stock.lenght; i++){
+      for(int j = 0; j < stock[i].length; j++)
+        stock[i][j] = null;
+    }
   }
 
   void showBoad(){
@@ -42,14 +46,27 @@ class Boad{
     popMatrix();
     }
 
-  void makeGraph(){
+    Graph makeGraph(){
     //きぬたにおまかせ♡
     //新たにクラスやメソッド作ったりしていいので探索でis4ElementsConnectedを探してね
 
-    for(Puyo p : puyos){
-      //ぷよの座標（連続値）から、どのマスにいるか（離散値）を求め
-      //stock配列を作成する
+      for(Puyo p : puyos){
+        //ぷよの座標（連続値）から、どのマスにいるか（離散値）を求め
+        //stock配列を作成する
+        float xpos = (p.loc.x - (width - 3 * cellLength)) / cellLength;
+        float ypos = (p.loc.y - (height - 6 * cellLength)) / cellLength;
+        stock[(int)xpos][(int)ypos] = p;
+      }
 
-    }
+      int[][] adjMatrix = new int[12][7];
+      for(int i = 0; i < stock.length; i++){
+        for(int j = 0; j < stock[i].length; j++)
+          if(stock[i][j] != null) adjMatrix[i][j] = 1;
+      }
+
+      return new Graph(adjMatrix);
   }
+
+
+
 }
