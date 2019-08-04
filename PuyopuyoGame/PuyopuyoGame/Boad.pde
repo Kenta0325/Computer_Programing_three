@@ -47,9 +47,6 @@ class Boad{
     }
 
     Graph makeGraph(){
-    //きぬたにおまかせ♡
-    //新たにクラスやメソッド作ったりしていいので探索でis4ElementsConnectedを探してね
-
       for(Puyo p : puyos){
         //ぷよの座標（連続値）から、どのマスにいるか（離散値）を求め
         //stock配列を作成する
@@ -58,15 +55,36 @@ class Boad{
         stock[(int)xpos][(int)ypos] = p;
       }
 
-      int[][] adjMatrix = new int[12][7];
-      for(int i = 0; i < stock.length; i++){
-        for(int j = 0; j < stock[i].length; j++)
-          if(stock[i][j] != null) adjMatrix[i][j] = 1;
+      int[][] adjMatrix = new int[12 * 6][12 * 6];
+      for(int i = 1; i < stock.length - 1; i++){
+        for(int j = 1; j < stock[i].length - 1; j++){
+          int index = i * 6 + j;
+          if(stock[i][j].c == stock[i][j + 1].c)
+            adjMatrix[index][index + 1] = 1;
+          if(stock[i][j].c == stock[i][j - 1].c)
+            adjMatrix[index][index - 1] = 1;
+          if(stock[i][j].c == stock[i + 1][j].c)
+            adjMatrix[index][index + 6] = 1;
+          if(stock[i][j].c == stock[i - 1][j].c)
+            adjMatrix[index][index - 6] = 1;
+        }
       }
 
       return new Graph(adjMatrix);
-  }
+    }
 
-
-
+    ArrayList<Puyopuyo> findChains(){
+      ArrayList<Puyopuyo> chains = new ArrayList<Puyopuyo>();
+      Graph graph = makeGraph();
+      ArrayList<NodeSet> chaninsNode = graph.findConnectedComponents();
+      for(NodeSet nodes : chiansNode){
+        if(nodes == null) continue;
+        Puyopuyo chaninBrock = new Puyopuyo();
+        for(Node node : nodes){
+          chaninBrock.add(stock[node.index / 6][node.index % 6]);
+        }
+        chains.add(chainBrock);
+      }
+      return chains;
+    }
 }
