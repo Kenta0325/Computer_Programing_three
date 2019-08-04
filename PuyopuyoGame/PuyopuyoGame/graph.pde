@@ -21,6 +21,7 @@ class Graph{
     for(Node node : nodes){
       if(!node.mark) chains.add(BFS(node));
     }
+    return chains;
   }
 
   NodeSet BFS(Node node){
