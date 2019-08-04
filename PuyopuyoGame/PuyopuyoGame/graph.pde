@@ -27,7 +27,7 @@ class Graph{
     Node u = node;
     NodeSet connectedComponent = new NodeSet();
     for(Edge edge : node.outgoing){
-      Node v = edge.minus == node ? edge.plus : edge.minus;
+      Node v = (edge.minus == node) ? edge.plus : edge.minus;
       if(v.mark) continue;
       connectedComponent.add(v);
       v.mark = true;
