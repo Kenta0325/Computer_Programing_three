@@ -4,6 +4,7 @@ class Graph{
   Graph(int[][] adjMatrix){
     nodes = new NodeSet(adjMatrix.length);
     edges = new EdgeSet(adjMatrix, nodes);
+    for(Edge e : edges)
     setOutgoing();
   }
 
@@ -27,6 +28,7 @@ class Graph{
   NodeSet DFS(Node node){
     Node u = node;
     NodeSet connectedComponent = new NodeSet();
+    for(Node v : nodes) v.mark = false;
     int index = 0;
     while(true){
       if(index == u.outgoing.size()) break;
@@ -39,8 +41,9 @@ class Graph{
     }
     if(connectedComponent.size() < 4)
       return null;
-    else
+    else{
       return connectedComponent;
+    }
   }
 
 }
