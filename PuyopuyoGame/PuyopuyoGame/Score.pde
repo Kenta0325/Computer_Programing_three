@@ -5,20 +5,26 @@ class Score {
   int[] irokazu = {0, 3, 6, 12, 24};
   int[] cb = {0, 0, 0, 0};
   Boad a;
+  //Puyopuyo p;
   Score() {
     totalScore = 0;
     a = new Boad();
+    p = new Puyopuyo();
   }
 
   void showScore() {
     //スコアを表示する
-    calculateScore();
-    pushMatrix();
-    fill(0);
-    textSize(30);
-    translate(width/2, height/2);
-    text(totalScore, 50*4, 50*6);
-    popMatrix();
+    //if (p.isFall()==true) {
+      calculateScore();
+      pushMatrix();
+      textSize(30);
+      translate(width/2+50*4, height/2+50*6);
+      fill(255);
+      rect(-70,-30,140,60);
+      fill(0);
+      text(totalScore, 0, 0);
+      popMatrix();
+    //}
   }
 
   void calculateScore() {
@@ -27,6 +33,7 @@ class Score {
     if (cb[0]+cb[1]+cb[2]==0) subscore=1;
     totalScore += cb[3]*subscore*10;
   }
+
 
   void calculateBonus() {
     if (a.findChains().size()!=0) {
@@ -41,7 +48,7 @@ class Score {
         deleteSum += chain.get(i).size();
       }
       //色数
-      //cb[2] =
+      //cb[2] +=
       //消した数
       cb[3] += deleteSum;
     }
