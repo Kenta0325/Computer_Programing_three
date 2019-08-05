@@ -10,13 +10,6 @@ class Score {
     a = new Boad();
   }
 
-  void calculateScore() {
-    calculateBonus();
-    int subscore = cb[0]+cb[1]+cb[2];
-    if (cb[0]+cb[1]+cb[2]==0) subscore=1;
-    totalScore += cb[3]*subscore*10;
-  }
-
   void showScore() {
     //スコアを表示する
     calculateScore();
@@ -26,6 +19,13 @@ class Score {
     translate(width/2, height/2);
     text(totalScore, 50*4, 50*6);
     popMatrix();
+  }
+
+  void calculateScore() {
+    calculateBonus();
+    int subscore = cb[0]+cb[1]+cb[2];
+    if (cb[0]+cb[1]+cb[2]==0) subscore=1;
+    totalScore += cb[3]*subscore*10;
   }
 
   void calculateBonus() {
