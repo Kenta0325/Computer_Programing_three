@@ -43,7 +43,7 @@ class Score {
       //色数
       //cb[2] =
       //消した数
-      cb[3] = deleteSum;
+      cb[3] += deleteSum;
     }
   }
   /*
