@@ -11,8 +11,6 @@ void setup() {
 }
 
 void draw() {
-
-  if(mousePressed) g.b = true;
   /////////////
   game.showGame();
 }
