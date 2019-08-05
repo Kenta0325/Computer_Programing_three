@@ -5,6 +5,8 @@ class Graph{
     nodes = new NodeSet(adjMatrix.length);
     edges = new EdgeSet(adjMatrix, nodes);
     for(Edge e : edges)
+    if(e.minus != null && e.plus != null)
+      println(e.minus.index + " : " + e.plus.index);
     setOutgoing();
   }
 
@@ -39,9 +41,12 @@ class Graph{
       index = 0;
       u = v;
     }
+    if(connectedComponent.size() != 0)
+      println(connectedComponent.size());
     if(connectedComponent.size() < 4)
       return null;
     else{
+      println("find chain!");
       return connectedComponent;
     }
   }
