@@ -5,26 +5,24 @@ class Score {
   int[] irokazu = {0, 3, 6, 12, 24};
   int[] cb = {0, 0, 0, 0};
   Boad a;
-  //Puyopuyo p;
+  Next n;
   Score() {
     totalScore = 0;
     a = new Boad();
-    p = new Puyopuyo();
+    n = new Next();
   }
 
   void showScore() {
     //スコアを表示する
-    //if (p.isFall()==true) {
-      calculateScore();
+      //calculateScore();
       pushMatrix();
       textSize(30);
-      translate(width/2+50*4, height/2+50*6);
+      translate(width/2+50*6, height/2+50*5);
       fill(255);
       rect(-70,-30,140,60);
       fill(0);
       text(totalScore, 0, 0);
       popMatrix();
-    //}
   }
 
   void calculateScore() {
