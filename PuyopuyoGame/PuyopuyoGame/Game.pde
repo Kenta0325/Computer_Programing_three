@@ -1,40 +1,46 @@
-class Game{
-  Title titleScreen;
-  Main mainScreen;
-  boolean touched;//mousePressedされたかどうかを入れる変数
-  Game(){
-    touched = false;
-    titleScreen = new Title();
-    mainScreen = new Main();
+class Graph{
+  NodeSet nodes;
+  EdgeSet edges;
+  Graph(int[][] adjMatrix){
+    nodes = new NodeSet(adjMatrix.length);
+    edges = new EdgeSet(adjMatrix, nodes);
+    setOutgoing();
   }
 
- //タイトルを表示
-  void showTitle(){
-    //t = new Title();
-    t.show();
-  }
-
-//メインのゲーム画面を表示
-  void showMain(){
-   if(fromTitleToMain()) //m = new Main();
-    m.show();
-  }
-
-  boolean fromTitleToMain(){
-    if(/*ゲーム画面に移行する条件を入力*/) return true;
-    return false;
-  }
-
-///////
-
-  void showGame(){
-    if(!touched) touched = isTouched();
-    if(!touched) titleScreen.show();
-    else{
-      mainScreen.show();
+  void setOutgoing(){
+    for(Edge e : edges){
+      Node u = e.minus;
+      Node v = e.plus;
+      u.setOutgoing(v);
+      v.setOutgoing(u);
     }
   }
-  boolean isTouched(){
-    return mousePressed;
+
+  ArrayList<NodeSet> findConnectedComponents(){
+    ArrayList<NodeSet> chains = new ArrayList<NodeSet>();
+    for(Node node : nodes){
+      if(!node.mark) chains.add(DFS(node));
+    }
+    return chains;
   }
+
+  NodeSet DFS(Node node){
+    Node u = node;
+    NodeSet connectedComponent = new NodeSet();
+    int index = 0;
+    while(true){
+      if(index == u.outgoing.size()) break;
+      Node v = u.outgoing.get(index++);
+      if(v.mark) continue;
+      connectedComponent.add(v);
+      v.mark = true;
+      index = 0;
+      u = v;
+    }
+    if(connectedComponent.size() < 4)
+      return null;
+    else
+      return connectedComponent;
+  }
+
 }
